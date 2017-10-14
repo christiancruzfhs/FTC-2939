@@ -34,9 +34,9 @@ public class RobotTest extends LinearOpMode {
                 precisionMode = !precisionMode;
             }
 
-            if (gamepad1.left_trigger > 0){
+            if (gamepad1.left_bumper){
                 elevatorMotor.setPower(1);
-            } else if (gamepad1.left_bumper){
+            } else if (gamepad1.left_trigger > 0){
                 elevatorMotor.setPower(-1);
             } else {
                 elevatorMotor.setPower(0);
