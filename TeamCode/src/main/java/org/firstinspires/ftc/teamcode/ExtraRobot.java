@@ -35,7 +35,8 @@ public class ExtraRobot extends LinearOpMode {
         leftMotor = hardwareMap.get(DcMotor.class,"left_motor");
         rightMotor = hardwareMap.get(DcMotor.class,"right_motor");
 
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         rightGripper.setDirection(Servo.Direction.REVERSE);
 
         waitForStart();
