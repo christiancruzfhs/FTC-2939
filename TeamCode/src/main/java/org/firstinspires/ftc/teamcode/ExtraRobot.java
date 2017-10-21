@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 /**
  * Created by Chris on 10/10/2017.
@@ -62,7 +61,6 @@ public class ExtraRobot extends LinearOpMode {
         while (opModeIsActive()){
             if (gamepad1.y) {
                 precisionMode = !precisionMode;
-
             }
 
             if (gamepad1.dpad_up && !topLimitSwitch.getState()){
@@ -87,7 +85,6 @@ public class ExtraRobot extends LinearOpMode {
 
             leftGripper.setPosition(position);
             rightGripper.setPosition(position);
-
 
             double leftPower  = gamepad1.left_stick_y ;
             double rightPower = gamepad1.right_stick_y ;
