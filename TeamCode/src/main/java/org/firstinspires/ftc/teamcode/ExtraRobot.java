@@ -48,20 +48,20 @@ public class ExtraRobot extends LinearOpMode {
                 precisionMode = !precisionMode;
             }
 
-            if (gamepad1.dpad_up){
+            if (gamepad2.dpad_up){
                 elevatorMotor.setPower(-1);
-            } else if (gamepad1.dpad_down){
+            } else if (gamepad2.dpad_down){
                 elevatorMotor.setPower(1);
             } else {
                 elevatorMotor.setPower(0);
             }
 
-            if (gamepad1.right_bumper){
+            if (gamepad2.right_bumper){
                 position += INCREMENT;
                 if (position >= MAX_POS){
                     position = MAX_POS;
                 }
-            } else if (gamepad1.left_bumper){
+            } else if (gamepad2.left_bumper){
                 position -= INCREMENT;
                 if (position <= MIN_POS){
                     position = MIN_POS;
