@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Hardware;
 
 /**
  * Created by Chris on 10/10/2017.
@@ -20,9 +21,6 @@ public class ExtraRobot extends LinearOpMode {
 
     private Servo leftGripper;
     private Servo rightGripper;
-
-    private DcMotor leftMotor;
-    private DcMotor rightMotor;
 
     private DigitalChannel topLimitSwitch;
     private DigitalChannel bottomLimitSwitch;
@@ -38,16 +36,16 @@ public class ExtraRobot extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
+        ExtraRobotBase extraRobotBase = new ExtraRobotBase(hardwareMap);
+
         elevatorMotor = hardwareMap.get(DcMotor.class,"elevator_motor");
         leftGripper = hardwareMap.get(Servo.class,"left_gripper");
         rightGripper = hardwareMap.get(Servo.class,"right_gripper");
-        leftMotor = hardwareMap.get(DcMotor.class,"left_motor");
-        rightMotor = hardwareMap.get(DcMotor.class,"right_motor");
         topLimitSwitch = hardwareMap.get(DigitalChannel.class,"top_limit_switch");
         bottomLimitSwitch = hardwareMap.get(DigitalChannel.class,"bottom_limit_switch");
 
-        leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        extraRobotBase.setLeftDirection(DcMotorSimple.Direction.FORWARD);
+        extraRobotBase.setRightDirection(DcMotorSimple.Direction.REVERSE);
         rightGripper.setDirection(Servo.Direction.REVERSE);
 
         topLimitSwitch.setMode(DigitalChannel.Mode.INPUT);
@@ -94,8 +92,8 @@ public class ExtraRobot extends LinearOpMode {
                 rightPower /= 2;
             }
 
-            leftMotor.setPower(leftPower);
-            rightMotor.setPower(rightPower);
+            extraRobotBase.setLeftPower(leftPower);
+            extraRobotBase.setRightPower(rightPower);
 
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
